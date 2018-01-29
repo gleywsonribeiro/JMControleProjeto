@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<ui:composition template="/WEB-INF/template/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="titulo">Cadastro de Projetos</ui:define>
+
+    <ui:define name="corpo">
+        <h1>Cadastro de Projetos</h1>
+
+        <h:form id="frmCadastro">
+            <p:messages id="messages"  showDetail="false" autoUpdate="true" closable="true" />
+
+            <p:panelGrid columns="2" id="painel" style="width: 100%; margin-top: 20px" 
+                         columnClasses="rotulo, campo">
+
+                <p:outputLabel value="Nome" for="nome" />
+                <h:inputText id="nome"  required="true"  
+                             requiredMessage="Campo Nome obrigatorio"/>
+
+                <p:outputLabel value="Descricao" for="descricao" />
+                <h:inputText id="descricao"  required="true"
+                             requiredMessage="Campo Descrição obrigatorio"/>
+
+                <p:outputLabel value="Orçamento" for="orcamento" />
+                <h:inputText id="orcamento"  required="true" 
+                             requiredMessage="Campo Orçamento obrigatorio"/>
+
+                <p:outputLabel value="Situacao" for="situacao" />
+                <p:selectOneMenu id="situacao"  required="true"
+                                 requiredMessage="Campo Situação obrigatorio">
+                    <f:selectItem itemLabel="Selecione a situação do projeto" />
+                    <f:selectItems  var="situacao" 
+                                   />
+                </p:selectOneMenu>                       
+            </p:panelGrid>
+
+            <p:toolbar style="margin-top: 20px">
+                <f:facet name="left">
+                    <p:commandButton value="Salvar"  update="@form" />
+                </f:facet>
+            </p:toolbar>
+        </h:form>
+    </ui:define>
+</ui:composition>
